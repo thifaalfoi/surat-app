@@ -36,8 +36,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="hidden md:flex w-64 shrink-0 flex-col bg-(--navy) text-white">
         <div className="px-6 py-6 border-b border-white/10">
-          <div className="text-lg font-semibold tracking-tight">SIMSurat</div>
-          <div className="text-xs text-white/50 mt-0.5">Sistem Manajemen Surat</div>
+          <div className="text-lg font-semibold tracking-tight">SIMAP</div>
+          <div className="text-xs text-white/50 mt-0.5">Sistem Manajemen Arsip & Persuratan</div>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
           {NAV.map((item) => {
