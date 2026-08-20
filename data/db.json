@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password_hash": "$2a$10$tmtoK9WL7I87PFnYvPuot.XiPSG8CZesv.Ds4OfZQlW1ean2iJP2a",
+      "nama": "Administrator TU",
+      "role": "admin",
+      "bagian_id": 1,
+      "created_at": "2026-08-20T00:53:17.773Z"
+    },
+    {
+      "id": 2,
+      "username": "umum",
+      "password_hash": "$2a$10$AoYU3ZMU5Zofhqlu2r0MDOKMKBWs5trDcmrrMidALpyOdMua9gkfS",
+      "nama": "Petugas Bagian Umum",
+      "role": "petugas",
+      "bagian_id": 2,
+      "created_at": "2026-08-20T00:53:17.873Z"
+    }
+  ],
+  "bagian": [
+    {
+      "id": 1,
+      "nama_bagian": "Tata Usaha",
+      "kode": "TU",
+      "created_at": "2026-08-20T00:53:17.652Z"
+    },
+    {
+      "id": 2,
+      "nama_bagian": "Bagian Umum",
+      "kode": "UMUM",
+      "created_at": "2026-08-20T00:53:17.655Z"
+    },
+    {
+      "id": 3,
+      "nama_bagian": "Bagian Keuangan",
+      "kode": "KEU",
+      "created_at": "2026-08-20T00:53:17.656Z"
+    }
+  ],
+  "suratMasuk": [],
+  "suratKeluar": [],
+  "activityLog": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "user_nama": "Administrator TU",
+      "action": "LOGIN",
+      "detail": "Administrator TU masuk ke sistem",
+      "created_at": "2026-08-20T00:53:45.386Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "user_nama": "Administrator TU",
+      "action": "LOGOUT",
+      "detail": "Administrator TU keluar dari sistem",
+      "created_at": "2026-08-20T00:54:00.514Z"
+    },
+    {
+      "id": 3,
+      "user_id": 2,
+      "user_nama": "Petugas Bagian Umum",
+      "action": "LOGIN",
+      "detail": "Petugas Bagian Umum masuk ke sistem",
+      "created_at": "2026-08-20T00:54:09.570Z"
+    }
+  ],
+  "counters": {
+    "users": 2,
+    "bagian": 3,
+    "suratMasuk": 0,
+    "suratKeluar": 0,
+    "activityLog": 3
+  }
+}

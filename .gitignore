@@ -1,5 +1,16 @@
-node_modules/
-data/db.json
-uploads/*
-!uploads/.gitkeep
+﻿# next.js
+/.next/
+/out/
+
+# node
+/node_modules/
+
+# env files (semua varian)
 .env
+.env*.local
+.envlocal
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
