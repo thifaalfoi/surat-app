@@ -1,14 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Me = { name: string; username: string; role: string } | null;
 
-const NAV = [
+type NavItem = {
+  href: string;
+  label: string;
+  icon: string;
+  match?: string;
+  jenis?: string;
+};
+
+const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", icon: "📊" },
-  { href: "/surat?jenis=MASUK", label: "Surat Masuk", icon: "↓", match: "/surat" , jenis: "MASUK"},
+  { href: "/surat?jenis=MASUK", label: "Surat Masuk", icon: "↓", match: "/surat", jenis: "MASUK" },
   { href: "/surat?jenis=KELUAR", label: "Surat Keluar", icon: "↑", match: "/surat", jenis: "KELUAR" },
   { href: "/aktivitas", label: "Riwayat Aktivitas", icon: "🕘" },
 ];
@@ -16,6 +24,7 @@ const NAV = [
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [me, setMe] = useState<Me>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -31,6 +40,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     router.refresh();
   }
 
+  function isActive(item: NavItem) {
+    if (item.href === "/dashboard") return pathname === "/dashboard";
+    if (item.match) {
+      return pathname.startsWith(item.match) && searchParams.get("jenis") === item.jenis;
+    }
+    return pathname === item.href;
+  }
+
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
@@ -41,15 +58,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
           {NAV.map((item) => {
-            const active =
-              item.href === "/dashboard"
-                ? pathname === "/dashboard"
-                : item.match
-                ? pathname.startsWith(item.match) &&
-                  (typeof window !== "undefined"
-                    ? new URLSearchParams(window.location.search).get("jenis") === item.jenis
-                    : false)
-                : pathname === item.href;
+            const active = isActive(item);
             return (
               <Link
                 key={item.href}

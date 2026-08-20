@@ -1,0 +1,47 @@
+<div class="mb-4">
+  <h3 class="fw-bold mb-0">Input Surat Masuk</h3>
+  <p class="text-muted mb-0">Catat surat masuk baru dan disposisikan ke bagian tujuan.</p>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <form action="/surat-masuk" method="POST" enctype="multipart/form-data">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nomor Surat <span class="text-danger">*</span></label>
+          <input type="text" name="nomor_surat" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Tanggal Surat <span class="text-danger">*</span></label>
+          <input type="date" name="tanggal_surat" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Pengirim <span class="text-danger">*</span></label>
+          <input type="text" name="pengirim" class="form-control" placeholder="Nama instansi/orang pengirim" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Disposisi ke Bagian <span class="text-danger">*</span></label>
+          <select name="bagian_tujuan_id" class="form-select" required>
+            <option value="">-- Pilih Bagian --</option>
+            <% bagianList.forEach(b => { %>
+              <option value="<%= b.id %>"><%= b.nama_bagian %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Perihal <span class="text-danger">*</span></label>
+          <input type="text" name="perihal" class="form-control" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Upload File Surat (PDF)</label>
+          <input type="file" name="file" accept="application/pdf" class="form-control">
+          <div class="form-text">Maksimal 10MB, format PDF.</div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-save me-1"></i>Simpan Surat Masuk</button>
+        <a href="/surat-masuk" class="btn btn-outline-secondary">Batal</a>
+      </div>
+    </form>
+  </div>
+</div>

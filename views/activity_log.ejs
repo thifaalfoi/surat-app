@@ -1,0 +1,27 @@
+<div class="mb-4">
+  <h3 class="fw-bold mb-0">Riwayat Aktivitas</h3>
+  <p class="text-muted mb-0">Log seluruh aktivitas pengguna dalam sistem.</p>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0 align-middle">
+      <thead class="table-light">
+        <tr><th style="width:170px">Waktu</th><th>Pengguna</th><th>Aksi</th><th>Keterangan</th></tr>
+      </thead>
+      <tbody>
+        <% if (logs.length === 0) { %>
+          <tr><td colspan="4" class="text-center text-muted py-4">Belum ada aktivitas.</td></tr>
+        <% } %>
+        <% logs.forEach(log => { %>
+          <tr>
+            <td class="small text-muted"><%= new Date(log.created_at).toLocaleString('id-ID') %></td>
+            <td><%= log.user_nama %></td>
+            <td><span class="badge bg-light text-dark border"><%= log.action %></span></td>
+            <td class="small"><%= log.detail %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
